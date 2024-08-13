@@ -87,6 +87,7 @@
             <option value="תל אביב">תל אביב</option>
             <option value="חיפה">חיפה</option>
             <option value="באר שבע">באר שבע</option>
+            <option value="רבינו תם">רבינו תם</option>
         </select>
         <div id="countdown"></div>
         <div id="fastEndTime"></div>
@@ -98,7 +99,8 @@
             'ירושלים': '19:53',
             'תל אביב': '19:55',
             'חיפה': '19:55',
-            'באר שבע': '19:53'
+            'באר שבע': '19:53',
+            'רבינו תם': '20:47'
         };
 
         const citySelect = document.getElementById('citySelect');
@@ -121,7 +123,7 @@
                 countdownElement.textContent = 'הצום הסתיים';
             }
 
-            fastEndTimeElement.textContent = `צאת הצום ב${selectedCity}: ${endTime}`;
+            fastEndTimeElement.textContent = `צאת הצום ${selectedCity === 'רבינו תם' ? 'לפי ' : 'ב'}${selectedCity}: ${endTime}`;
         }
 
         citySelect.addEventListener('change', updateCountdown);
