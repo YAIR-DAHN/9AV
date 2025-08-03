@@ -11,10 +11,10 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://9av-countdown.netlify.app/">
+    <meta property="og:url" content="https://did.li/9-beav">
     <meta property="og:title" content="ספירה לאחור לסיום צום תשעה באב">
     <meta property="og:description" content="ספירה לאחור לסיום צום תשעה באב עם זמני צאת כוכבים מדויקים לכל הערים בישראל">
-    <meta property="og:image" content="https://9av-countdown.netlify.app/og-image.png">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/1a1a1a/ffd700?text=ספירה+לאחור+לסיום+צום+תשעה+באב">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="ספירה לאחור לסיום צום תשעה באב">
@@ -23,10 +23,10 @@
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://9av-countdown.netlify.app/">
+    <meta property="twitter:url" content="https://did.li/9-beav">
     <meta property="twitter:title" content="ספירה לאחור לסיום צום תשעה באב">
     <meta property="twitter:description" content="ספירה לאחור לסיום צום תשעה באב עם זמני צאת כוכבים מדויקים">
-    <meta property="twitter:image" content="https://9av-countdown.netlify.app/og-image.png">
+    <meta property="twitter:image" content="https://via.placeholder.com/1200x630/1a1a1a/ffd700?text=ספירה+לאחור+לסיום+צום+תשעה+באב">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffd700'%3E%3Cpath d='M12 2c-5.33 7.33-8 11.33-8 16 0 4.42 3.58 8 8 8s8-3.58 8-8c0-4.67-2.67-8.67-8-16zm0 18c-1.66 0-3-1.34-3-3 0-1.67 1.67-3.67 3-5.33 1.33 1.66 3 3.66 3 5.33 0 1.66-1.34 3-3 3z'/%3E%3C/svg%3E">
@@ -955,7 +955,7 @@
             const shareData = {
                 title: '🕯️ ספירה לאחור לסיום צום תשעה באב',
                 text: shareText,
-                url: window.location.href
+                url: 'https://did.li/9-beav'
             };
 
             // אפקט ויזואלי לכפתור שיתוף
@@ -970,7 +970,7 @@
             if (navigator.share) {
                 try {
                     await navigator.share(shareData);
-                    showNotification('שותף בהצלחה! 🎉', 'התוכן שותף במדיה החברתית', [200, 100, 200]);
+                    showNotification('שותף בהצלחה! 🎉', 'התוכן מוכן לשיתוף במדיה החברתית', [200, 100, 200]);
                 } catch (err) {
                     if (err.name !== 'AbortError') {
                         console.log('שיתוף נכשל:', err);
@@ -1094,14 +1094,6 @@
             ctx.fillStyle = '#87CEEB';
             ctx.font = 'italic 24px Arial';
             ctx.fillText('לשנה הבאה בירושלים הבנויה! 🙏', 400, 420);
-            
-            // QR code מדומה (מייצג קישור)
-            ctx.fillStyle = '#444';
-            ctx.fillRect(50, 480, 80, 80);
-            ctx.fillStyle = '#ffd700';
-            ctx.font = '12px Arial';
-            ctx.textAlign = 'left';
-            ctx.fillText('סרוק לעדכונים', 50, 575);
             
             // קרדיט מעוצב
             ctx.fillStyle = '#888';
