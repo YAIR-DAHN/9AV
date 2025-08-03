@@ -3,131 +3,887 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ספירה לאחור לסיום צום תשעה באב עם זמני צאת כוכבים מדויקים לכל הערים בישראל">
+    <meta name="keywords" content="תשעה באב, צום, ספירה לאחור, צאת כוכבים, ירושלים, תל אביב, חיפה, באר שבע, רבינו תם">
+    <meta name="author" content="y.d. Systems">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Hebrew">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://9av-countdown.netlify.app/">
+    <meta property="og:title" content="ספירה לאחור לסיום צום תשעה באב">
+    <meta property="og:description" content="ספירה לאחור לסיום צום תשעה באב עם זמני צאת כוכבים מדויקים לכל הערים בישראל">
+    <meta property="og:image" content="https://9av-countdown.netlify.app/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="ספירה לאחור לסיום צום תשעה באב">
+    <meta property="og:site_name" content="ספירה לאחור תשעה באב">
+    <meta property="og:locale" content="he_IL">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://9av-countdown.netlify.app/">
+    <meta property="twitter:title" content="ספירה לאחור לסיום צום תשעה באב">
+    <meta property="twitter:description" content="ספירה לאחור לסיום צום תשעה באב עם זמני צאת כוכבים מדויקים">
+    <meta property="twitter:image" content="https://9av-countdown.netlify.app/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffd700'%3E%3Cpath d='M12 2c-5.33 7.33-8 11.33-8 16 0 4.42 3.58 8 8 8s8-3.58 8-8c0-4.67-2.67-8.67-8-16zm0 18c-1.66 0-3-1.34-3-3 0-1.67 1.67-3.67 3-5.33 1.33 1.66 3 3.66 3 5.33 0 1.66-1.34 3-3 3z'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffd700'%3E%3Cpath d='M12 2c-5.33 7.33-8 11.33-8 16 0 4.42 3.58 8 8 8s8-3.58 8-8c0-4.67-2.67-8.67-8-16zm0 18c-1.66 0-3-1.34-3-3 0-1.67 1.67-3.67 3-5.33 1.33 1.66 3 3.66 3 5.33 0 1.66-1.34 3-3 3z'/%3E%3C/svg%3E">
+
+    <!-- PWA -->
+    <meta name="theme-color" content="#ffd700">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="תשעה באב">
+
     <title>ספירה לאחור לסיום צום תשעה באב</title>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap" as="style">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap');
         
+        :root {
+            --primary-bg: #1a1a1a;
+            --secondary-bg: rgba(30, 30, 30, 0.8);
+            --accent-color: #ffd700;
+            --text-color: #e0e0e0;
+            --text-secondary: #bbb;
+            --hover-bg: #333;
+            --border-radius: 15px;
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] {
+            --primary-bg: #f5f5f5;
+            --secondary-bg: rgba(255, 255, 255, 0.9);
+            --accent-color: #d4af37;
+            --text-color: #333;
+            --text-secondary: #666;
+            --hover-bg: #e0e0e0;
+        }
+
+        [data-theme="royal"] {
+            --primary-bg: #0f0f1a;
+            --secondary-bg: rgba(20, 20, 40, 0.9);
+            --accent-color: #ffd700;
+            --text-color: #f0f0f0;
+            --text-secondary: #ccc;
+            --hover-bg: #2a2a4a;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: 'Heebo', sans-serif;
-            background-color: #1a1a1a;
-            color: #e0e0e0;
+            font-family: 'Heebo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            transition: var(--transition);
+            overflow-x: hidden;
         }
-        .container {
-            background-color: rgba(30, 30, 30, 0.8);
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            padding: 30px;
-            text-align: center;
-            max-width: 90%;
-            width: 400px;
-            backdrop-filter: blur(10px);
-            position: relative;
-            transition: all 0.5s ease;
+
+        .top-controls {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            display: flex;
+            gap: 10px;
         }
-        h1 {
-            color: #ffd700;
-            font-size: 1.8em;
-            margin-bottom: 30px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
-        select {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 25px;
+
+        .theme-toggle, .share-btn {
+            background: var(--secondary-bg);
             border: none;
             border-radius: 8px;
-            font-size: 1em;
-            background-color: #333;
-            color: #e0e0e0;
+            padding: 8px 12px;
+            color: var(--text-color);
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: var(--transition);
+            font-size: 0.9em;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
         }
+
+        .theme-toggle:hover, .share-btn:hover {
+            background: var(--hover-bg);
+            transform: translateY(-2px);
+        }
+
+        .theme-toggle:focus, .share-btn:focus {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+
+        .container {
+            background-color: var(--secondary-bg);
+            border-radius: var(--border-radius);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            padding: clamp(20px, 5vw, 40px);
+            text-align: center;
+            max-width: 95%;
+            width: min(450px, 95vw);
+            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(15px);
+            position: relative;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+        }
+
+        h1 {
+            color: var(--accent-color);
+            font-size: clamp(1.4em, 4vw, 2em);
+            margin-bottom: clamp(20px, 5vw, 30px);
+            text-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .controls-section {
+            margin-bottom: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            font-size: clamp(0.9em, 3vw, 1.1em);
+            background-color: var(--hover-bg);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23e0e0e0' d='M6 8L2 4h8z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: left 15px center;
+            padding-left: 45px;
+        }
+
         select:hover {
-            background-color: #444;
+            background-color: var(--primary-bg);
+            border-color: var(--accent-color);
+            transform: translateY(-1px);
         }
+
+        select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+        }
+
         #countdown {
-            font-size: 3em;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #ffd700;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            font-size: clamp(2em, 8vw, 4em);
+            font-weight: 900;
+            margin: clamp(15px, 4vw, 25px) 0;
+            color: var(--accent-color);
+            text-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 0.02em;
+            transition: var(--transition);
         }
+
+        .countdown-glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .countdown-urgent {
+            animation: urgentPulse 1s ease-in-out infinite;
+            color: #ff6b6b;
+        }
+
         #fastEndTime {
-            color: #bbb;
-            font-size: 1.1em;
+            color: var(--text-secondary);
+            font-size: clamp(1em, 3vw, 1.2em);
+            margin-bottom: 20px;
+            font-weight: 400;
         }
+
         .flame {
-            width: 80px;
-            height: 80px;
+            width: clamp(60px, 15vw, 100px);
+            height: clamp(60px, 15vw, 100px);
             background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffd700'%3E%3Cpath d='M12 2c-5.33 7.33-8 11.33-8 16 0 4.42 3.58 8 8 8s8-3.58 8-8c0-4.67-2.67-8.67-8-16zm0 18c-1.66 0-3-1.34-3-3 0-1.67 1.67-3.67 3-5.33 1.33 1.66 3 3.66 3 5.33 0 1.66-1.34 3-3 3z'/%3E%3C/svg%3E") no-repeat center center;
+            background-size: contain;
             margin: 0 auto 20px;
-            opacity: 0.7;
-            transition: all 0.5s ease;
+            opacity: 0.8;
+            transition: var(--transition);
+            animation: flameFlicker 3s ease-in-out infinite;
+            filter: drop-shadow(0 4px 8px rgba(255, 215, 0, 0.3));
         }
+
+        .flame-intense {
+            animation: flameIntense 1.5s ease-in-out infinite;
+            opacity: 1;
+            filter: drop-shadow(0 6px 15px rgba(255, 215, 0, 0.6));
+        }
+
+        .fast-end-message {
+            font-size: clamp(1.2em, 4vw, 1.8em);
+            color: var(--accent-color);
+            margin-top: 25px;
+            display: none;
+            font-weight: 600;
+            text-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+        }
+
+        .notification-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--accent-color), #ffed4e);
+            color: #333;
+            padding: 12px;
+            text-align: center;
+            font-weight: 600;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .notification-bar.show {
+            transform: translateY(0);
+        }
+
         .credit {
             position: absolute;
             bottom: 10px;
-            right: 10px;
-            font-size: 0.7em;
-            color: #666;
-            opacity: 0.7;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: clamp(0.6em, 2vw, 0.8em);
+            color: var(--text-secondary);
+            opacity: 0.8;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 5px;
         }
+
+        .credit:hover {
+            color: var(--accent-color);
+            opacity: 1;
+            background: rgba(255, 215, 0, 0.1);
+            transform: translateX(-50%) translateY(-2px);
+        }
+
+        .credit:focus {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: var(--secondary-bg);
+            margin: 10% auto;
+            padding: clamp(20px, 5vw, 40px);
+            border-radius: var(--border-radius);
+            width: min(450px, 90vw);
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        .close {
+            color: var(--text-secondary);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close:hover, .close:focus {
+            color: var(--accent-color);
+            background: rgba(255, 215, 0, 0.1);
+            outline: none;
+        }
+
+        .contact-item {
+            margin: 15px 0;
+            padding: 15px;
+            background-color: var(--hover-bg);
+            border-radius: 12px;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .contact-item:hover {
+            background-color: var(--primary-bg);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .contact-item a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: clamp(1em, 3vw, 1.2em);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-color);
+        }
+
+        .contact-item a:focus {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        .modal h2 {
+            color: var(--accent-color);
+            margin-bottom: 25px;
+            font-size: clamp(1.3em, 4vw, 1.8em);
+            text-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+        }
+
+        .action-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, var(--accent-color), #ffed4e);
+            color: #333;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: clamp(0.9em, 3vw, 1em);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 140px;
+            justify-content: center;
+            font-family: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .action-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .action-btn:hover::before {
+            left: 100%;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+            scale: 1.02;
+        }
+
+        .action-btn:focus {
+            outline: 2px solid var(--text-color);
+            outline-offset: 2px;
+        }
+
+        .action-btn:active {
+            transform: translateY(-1px);
+            scale: 0.98;
+        }
+
+        .action-btn .btn-icon {
+            font-size: 1.2em;
+            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
+        }
+
+        .share-btn {
+            background: linear-gradient(135deg, #4267B2, #5b7bd5);
+            color: white;
+        }
+
+        .share-btn:hover {
+            box-shadow: 0 6px 20px rgba(66, 103, 178, 0.4);
+        }
+
+        /* אנימציות */
+        @keyframes flameFlicker {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+            25% { transform: scale(1.05) rotate(1deg); opacity: 0.9; }
+            50% { transform: scale(0.98) rotate(-1deg); opacity: 0.85; }
+            75% { transform: scale(1.02) rotate(0.5deg); opacity: 0.95; }
+        }
+
+        @keyframes flameIntense {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.15) rotate(2deg); }
+            50% { transform: scale(1.1) rotate(-2deg); }
+            75% { transform: scale(1.2) rotate(1deg); }
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 4px 12px rgba(255, 215, 0, 0.4); }
+            to { text-shadow: 0 4px 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.3); }
+        }
+
+        @keyframes urgentPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
         @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes modalFadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
+        @keyframes modalSlideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
         .fade-in {
             animation: fadeIn 1s ease-in;
         }
-        .fast-end-message {
-            font-size: 1.5em;
-            color: #ffd700;
-            margin-top: 20px;
+
+        /* רספונסיבי */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                align-items: flex-start;
+                padding-top: 80px;
+                padding-bottom: 20px;
+                min-height: 100vh;
+            }
+
+            .top-controls {
+                top: 10px;
+                left: 10px;
+                right: 10px;
+                justify-content: space-between;
+            }
+
+            .container {
+                width: 100%;
+                max-width: none;
+                margin: 0;
+                padding-bottom: 60px;
+                margin-bottom: 20px;
+            }
+
+            .modal-content {
+                margin: 5% auto;
+                width: 95vw;
+            }
+
+            .action-buttons {
+                gap: 10px;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 15px;
+            }
+
+            .action-btn {
+                width: 100%;
+                max-width: 280px;
+                padding: 15px 20px;
+                font-size: 1.1em;
+            }
+
+            .credit {
+                bottom: 15px;
+                font-size: 0.75em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .controls-section {
+                gap: 10px;
+            }
+
+            .contact-item a {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .action-buttons {
+                gap: 8px;
+                margin-bottom: 20px;
+            }
+
+            .action-btn {
+                min-width: 120px;
+                padding: 12px 16px;
+            }
+
+            .action-btn .btn-icon {
+                font-size: 1.1em;
+            }
+
+            .container {
+                padding-bottom: 80px;
+                margin-bottom: 30px;
+            }
+
+            .credit {
+                position: relative;
+                bottom: auto;
+                left: auto;
+                transform: none;
+                margin-top: 35px;
+                margin-bottom: 15px;
+                text-align: center;
+                padding: 10px;
+                background: rgba(0,0,0,0.3);
+                border-radius: 8px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .container {
+                padding-bottom: 100px;
+                margin-bottom: 40px;
+            }
+
+            .credit {
+                font-size: 0.7em;
+                margin-top: 40px;
+                margin-bottom: 20px;
+                padding: 12px;
+            }
+
+            .action-buttons {
+                margin-bottom: 25px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .action-buttons {
+                justify-content: center;
+            }
+
+            .action-btn:hover {
+                transform: translateY(-4px) scale(1.03);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* נגישות */
+        @media (prefers-contrast: high) {
+            :root {
+                --accent-color: #ffff00;
+                --text-color: #ffffff;
+                --primary-bg: #000000;
+            }
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .hidden-canvas {
             display: none;
+        }
+
+        /* מצב דפוס */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            .container {
+                box-shadow: none;
+                border: 2px solid black;
+            }
+            .top-controls, .modal {
+            display: none;
+            }
         }
     </style>
 </head>
-<body>
+<body data-theme="dark">
+    <div class="top-controls">
+        <button class="theme-toggle" id="themeToggle" title="החלף תמת צבעים" aria-label="החלף בין מצב יום ללילה">🌙</button>
+        <button class="share-btn" id="shareBtn" title="שתף את הדף" aria-label="שתף את הדף">📤</button>
+    </div>
+
+    <div class="notification-bar" id="notificationBar" role="alert" aria-live="polite"></div>
+
     <div class="container">
-        <div class="flame"></div>
-        <h1>ספירה לאחור לסיום צום תשעה באב</h1>
-        <select id="citySelect">
+        <div class="flame" aria-hidden="true"></div>
+        <h1 id="mainTitle">ספירה לאחור לסיום צום תשעה באב</h1>
+        
+        <div class="controls-section">
+            <label for="citySelect" class="sr-only">בחר עיר לחישוב זמן צאת הצום</label>
+            <select id="citySelect" title="בחר עיר לחישוב זמן צאת הצום" aria-label="בחירת עיר">
             <option value="ירושלים">ירושלים</option>
             <option value="תל אביב">תל אביב</option>
             <option value="חיפה">חיפה</option>
             <option value="באר שבע">באר שבע</option>
             <option value="רבינו תם">רבינו תם</option>
         </select>
-        <div id="countdown"></div>
-        <div id="fastEndTime"></div>
-        <div class="fast-end-message">לשנה הבאה בירושלים הבנויה</div>
-        <div class="credit">נבנה ע"י y.d. Systems</div>
+        </div>
+
+        <div id="countdown" role="timer" aria-live="polite" aria-atomic="true"></div>
+        <div id="fastEndTime" aria-live="polite"></div>
+        <div class="fast-end-message" role="alert" aria-live="assertive">לשנה הבאה בירושלים הבנויה</div>
+        
+        <div class="action-section">
+            <div class="action-buttons">
+                <button class="action-btn share-btn" id="shareMainBtn" title="שתף את הספירה לאחור" aria-label="שתף את הדף">
+                    <span class="btn-icon" aria-hidden="true">🔗</span>
+                    <span>שתף</span>
+                </button>
+                <button class="action-btn" id="downloadImage" title="הורד תמונה של הספירה לאחור" aria-label="הורד תמונה">
+                    <span class="btn-icon" aria-hidden="true">📸</span>
+                    <span>הורד תמונה</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="credit" id="creditLink" tabindex="0" role="button" aria-label="פרטי יצירת קשר עם המפתח">נבנה ע"י y.d. Systems</div>
     </div>
 
+    <!-- Modal -->
+    <div id="contactModal" class="modal" role="dialog" aria-labelledby="contactTitle" aria-hidden="true">
+        <div class="modal-content">
+            <button class="close" aria-label="סגור חלון">&times;</button>
+            <h2 id="contactTitle">פרטי יצירת קשר</h2>
+            <div class="contact-item">
+                <a href="tel:0583730000" aria-label="התקשר לטלפון 0583730000">
+                    <span aria-hidden="true">📞</span>
+                    <span>טלפון: 0583730000</span>
+                </a>
+            </div>
+            <div class="contact-item">
+                <a href="https://wa.me/972583730000" target="_blank" rel="noopener" aria-label="שלח הודעה בווצאפ ל-0583730000">
+                    <span aria-hidden="true">💬</span>
+                    <span>ווצאפ: 0583730000</span>
+                </a>
+            </div>
+            <div class="contact-item">
+                <a href="mailto:yairdahn@gmail.com" aria-label="שלח מייל ל-yairdahn@gmail.com">
+                    <span aria-hidden="true">✉️</span>
+                    <span>מייל: yairdahn@gmail.com</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="downloadCanvas" class="hidden-canvas"></canvas>
+
     <script>
+        // קבועים ונתונים
         const cities = {
-            'ירושלים': '19:39',
-            'תל אביב': '19:37',
-            'חיפה': '19:39',
-            'באר שבע': '19:37',
-            'רבינו תם': '20:57'
+            'ירושלים': '19:55',
+            'תל אביב': '19:53',
+            'חיפה': '19:56',
+            'באר שבע': '19:53',
+            'רבינו תם': '21:04'
         };
 
-        const citySelect = document.getElementById('citySelect');
-        const countdownElement = document.getElementById('countdown');
-        const fastEndTimeElement = document.getElementById('fastEndTime');
-        const container = document.querySelector('.container');
-        const flame = document.querySelector('.flame');
-        const fastEndMessage = document.querySelector('.fast-end-message');
+        // אלמנטים DOM
+        const elements = {
+            citySelect: document.getElementById('citySelect'),
+            countdown: document.getElementById('countdown'),
+            fastEndTime: document.getElementById('fastEndTime'),
+            container: document.querySelector('.container'),
+            flame: document.querySelector('.flame'),
+            fastEndMessage: document.querySelector('.fast-end-message'),
+            modal: document.getElementById('contactModal'),
+            creditLink: document.getElementById('creditLink'),
+            closeModal: document.querySelector('.close'),
+            themeToggle: document.getElementById('themeToggle'),
+            shareBtn: document.getElementById('shareBtn'),
+            shareMainBtn: document.getElementById('shareMainBtn'),
+            downloadBtn: document.getElementById('downloadImage'),
+            notificationBar: document.getElementById('notificationBar'),
+            canvas: document.getElementById('downloadCanvas')
+        };
 
+        // משתנים גלובליים
+        let currentTheme = localStorage.getItem('theme') || 'dark';
+        let notificationPermission = false;
+        let hasNotified30 = false;
+        let hasNotified5 = false;
+        let hasNotifiedEnd = false;
+        let updateInterval;
+
+        // אתחול האפליקציה
+        function init() {
+            loadTheme();
+            loadSavedCity();
+            requestNotificationPermission();
+            setupEventListeners();
+            updateCountdown();
+            startCountdownTimer();
+        }
+
+        // ניהול תמות צבע
+        function loadTheme() {
+            document.body.setAttribute('data-theme', currentTheme);
+            elements.themeToggle.textContent = currentTheme === 'dark' ? '☀️' : 
+                                             currentTheme === 'light' ? '👑' : '🌙';
+            elements.themeToggle.title = currentTheme === 'dark' ? 'מצב יום' : 
+                                        currentTheme === 'light' ? 'מצב מלכותי' : 'מצב לילה';
+        }
+
+        function toggleTheme() {
+            const themes = ['dark', 'light', 'royal'];
+            const currentIndex = themes.indexOf(currentTheme);
+            currentTheme = themes[(currentIndex + 1) % themes.length];
+            localStorage.setItem('theme', currentTheme);
+            loadTheme();
+            
+            // הוספת אפקט ויזואלי למעבר
+            elements.container.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                elements.container.style.transform = '';
+            }, 150);
+        }
+
+        // שמירה וטעינה של עיר מועדפת
+        function saveCity(city) {
+            localStorage.setItem('preferredCity', city);
+        }
+
+        function loadSavedCity() {
+            const savedCity = localStorage.getItem('preferredCity');
+            if (savedCity && cities[savedCity]) {
+                elements.citySelect.value = savedCity;
+            }
+        }
+
+        // התראות
+        async function requestNotificationPermission() {
+            if ('Notification' in window) {
+                const permission = await Notification.requestPermission();
+                notificationPermission = permission === 'granted';
+            }
+        }
+
+        function showNotification(title, body, vibrate = [200]) {
+            // התראה בדפדפן
+            if (notificationPermission) {
+                new Notification(title, {
+                    body: body,
+                    icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffd700'%3E%3Cpath d='M12 2c-5.33 7.33-8 11.33-8 16 0 4.42 3.58 8 8 8s8-3.58 8-8c0-4.67-2.67-8.67-8-16z'/%3E%3C/svg%3E",
+                    tag: 'countdown-notification'
+                });
+            }
+
+            // התראה חזותית בדף
+            elements.notificationBar.textContent = `${title} - ${body}`;
+            elements.notificationBar.classList.add('show');
+            setTimeout(() => {
+                elements.notificationBar.classList.remove('show');
+            }, 5000);
+
+            // ויברציה במובייל
+            if ('vibrate' in navigator) {
+                navigator.vibrate(vibrate);
+            }
+
+            // צליל (אפשרות לעתיד)
+            playNotificationSound();
+        }
+
+        function playNotificationSound() {
+            // יצירת צליל קצר באמצעות Web Audio API
+            if ('AudioContext' in window || 'webkitAudioContext' in window) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                const audioContext = new AudioContext();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+                gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.3);
+            }
+        }
+
+        // עדכון ספירה לאחור
         function updateCountdown() {
-            const selectedCity = citySelect.value;
+            const selectedCity = elements.citySelect.value;
             const endTime = cities[selectedCity];
             const now = new Date();
             const fastEndDate = new Date('2025-08-03T' + endTime + ':00+03:00');
@@ -137,23 +893,358 @@
                 const hours = Math.floor(diff / (1000 * 60 * 60));
                 const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-                countdownElement.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-                fastEndMessage.style.display = 'none';
+                
+                const timeString = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                elements.countdown.textContent = timeString;
+                
+                // אפקטים חזותיים לפי זמן נותר
+                const totalMinutes = Math.floor(diff / (1000 * 60));
+                
+                if (totalMinutes <= 5) {
+                    elements.countdown.className = 'countdown-urgent';
+                    elements.flame.className = 'flame flame-intense';
+                    if (!hasNotified5) {
+                        showNotification('תשעה באב', 'הצום מסתיים בעוד 5 דקות!', [100, 50, 100, 50, 100]);
+                        hasNotified5 = true;
+                    }
+                } else if (totalMinutes <= 30) {
+                    elements.countdown.className = 'countdown-glow';
+                    if (!hasNotified30) {
+                        showNotification('תשעה באב', 'הצום מסתיים בעוד 30 דקות', [200]);
+                        hasNotified30 = true;
+                    }
+                } else {
+                    elements.countdown.className = '';
+                    elements.flame.className = 'flame';
+                }
+                
+                elements.fastEndMessage.style.display = 'none';
             } else {
-                countdownElement.textContent = 'הצום הסתיים';
-                container.style.backgroundColor = 'rgba(50, 50, 50, 0.9)';
-                flame.style.opacity = '1';
-                fastEndMessage.style.display = 'block';
-                fastEndMessage.classList.add('fade-in');
+                elements.countdown.textContent = 'הצום הסתיים';
+                elements.container.style.backgroundColor = 'var(--secondary-bg)';
+                elements.flame.className = 'flame flame-intense';
+                elements.fastEndMessage.style.display = 'block';
+                elements.fastEndMessage.classList.add('fade-in');
+                
+                if (!hasNotifiedEnd) {
+                    showNotification('מזל טוב!', 'צום תשעה באב הסתיים. לשנה הבאה בירושלים הבנויה!', [300, 100, 300]);
+                    hasNotifiedEnd = true;
+                }
             }
 
-            fastEndTimeElement.textContent = `צאת הצום ${selectedCity === 'רבינו תם' ? 'לפי ' : 'ב'}${selectedCity}: ${endTime}`;
+            const cityText = selectedCity === 'רבינו תם' ? 'לפי רבינו תם' : `ב${selectedCity}`;
+            elements.fastEndTime.textContent = `צאת הצום ${cityText}: ${endTime}`;
         }
 
-        citySelect.addEventListener('change', updateCountdown);
+        function startCountdownTimer() {
+            updateInterval = setInterval(updateCountdown, 1000);
+        }
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown(); // Initial call
+        // שיתוף
+        async function shareCountdown() {
+            const selectedCity = elements.citySelect.value;
+            const endTime = cities[selectedCity];
+            const currentCountdown = elements.countdown.textContent;
+            const cityText = selectedCity === 'רבינו תם' ? 'לפי רבינו תם' : `ב${selectedCity}`;
+            
+            let shareText = `🕯️ ספירה לאחור לסיום צום תשעה באב\n`;
+            shareText += `⏰ זמן נותר: ${currentCountdown}\n`;
+            shareText += `🌟 צאת הצום ${cityText}: ${endTime}\n`;
+            shareText += `🔗 עקוב בזמן אמת:`;
+            
+            const shareData = {
+                title: '🕯️ ספירה לאחור לסיום צום תשעה באב',
+                text: shareText,
+                url: window.location.href
+            };
+
+            // אפקט ויזואלי לכפתור שיתוף
+            const shareButtons = document.querySelectorAll('.share-btn, #shareBtn');
+            shareButtons.forEach(btn => {
+                btn.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    btn.style.transform = '';
+                }, 150);
+            });
+
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                    showNotification('שותף בהצלחה! 🎉', 'התוכן שותף במדיה החברתית', [200, 100, 200]);
+                } catch (err) {
+                    if (err.name !== 'AbortError') {
+                        console.log('שיתוף נכשל:', err);
+                        fallbackShare(shareData);
+                    }
+                }
+            } else {
+                fallbackShare(shareData);
+            }
+        }
+
+        // פונקציית שיתוף חלופית
+        async function fallbackShare(shareData) {
+            const fullText = `${shareData.text}\n${shareData.url}`;
+            
+            if (navigator.clipboard) {
+                try {
+                    await navigator.clipboard.writeText(fullText);
+                    showNotification('הועתק ללוח! 📋', 'המידע הועתק - אפשר להדביק בכל מקום', [100]);
+                } catch (err) {
+                    console.log('העתקה נכשלה:', err);
+                    legacyCopy(fullText);
+                }
+            } else {
+                legacyCopy(fullText);
+            }
+        }
+
+        // העתקה ישנה
+        function legacyCopy(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showNotification('הועתק ללוח! 📋', 'המידע הועתק בהצלחה', [100]);
+            } catch (err) {
+                console.log('העתקה נכשלה:', err);
+                showNotification('שגיאה', 'לא ניתן להעתיק את המידע', [300, 100, 300]);
+            } finally {
+                document.body.removeChild(textArea);
+            }
+        }
+
+        // הורדת תמונה
+        function downloadCountdownImage() {
+            const canvas = elements.canvas;
+            const ctx = canvas.getContext('2d');
+            const selectedCity = elements.citySelect.value;
+            const currentTime = new Date().toLocaleString('he-IL');
+            
+            // הגדרת גודל קנבס ברזולוציה גבוהה
+            const scale = 2;
+            canvas.width = 800 * scale;
+            canvas.height = 600 * scale;
+            ctx.scale(scale, scale);
+            
+            // רקע מודרני עם גרדיאנט
+            const gradient = ctx.createLinearGradient(0, 0, 0, 600);
+            gradient.addColorStop(0, '#1a1a1a');
+            gradient.addColorStop(0.5, '#2a2a3a');
+            gradient.addColorStop(1, '#1a1a2a');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 800, 600);
+            
+            // הוספת דוגמה דקורטיבית
+            ctx.fillStyle = 'rgba(255, 215, 0, 0.05)';
+            for (let i = 0; i < 20; i++) {
+                ctx.beginPath();
+                ctx.arc(Math.random() * 800, Math.random() * 600, Math.random() * 3, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            
+            // מסגרת דקורטיבית
+            ctx.strokeStyle = '#ffd700';
+            ctx.lineWidth = 3;
+            ctx.setLineDash([10, 5]);
+            ctx.strokeRect(20, 20, 760, 560);
+            ctx.setLineDash([]);
+            
+            // אייקון להבה
+            ctx.fillStyle = '#ffd700';
+            ctx.font = '48px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('🕯️', 400, 80);
+            
+            // כותרת מעוצבת
+            ctx.fillStyle = '#ffd700';
+            ctx.font = 'bold 40px Arial';
+            ctx.shadowColor = 'rgba(255, 215, 0, 0.5)';
+            ctx.shadowBlur = 10;
+            ctx.fillText('ספירה לאחור לסיום צום תשעה באב', 400, 130);
+            ctx.shadowBlur = 0;
+            
+            // ספירה לאחור מודגשת
+            ctx.fillStyle = '#ffd700';
+            ctx.font = 'bold 80px monospace';
+            ctx.shadowColor = 'rgba(255, 215, 0, 0.8)';
+            ctx.shadowBlur = 15;
+            ctx.fillText(elements.countdown.textContent || '00:00:00', 400, 230);
+            ctx.shadowBlur = 0;
+            
+            // מידע על העיר
+            ctx.fillStyle = '#e0e0e0';
+            ctx.font = 'bold 28px Arial';
+            const cityText = selectedCity === 'רבינו תם' ? 'לפי רבינו תם' : `ב${selectedCity}`;
+            ctx.fillText(`צאת הצום ${cityText}: ${cities[selectedCity]}`, 400, 300);
+            
+            // זמן יצירת התמונה
+            ctx.fillStyle = '#bbb';
+            ctx.font = '20px Arial';
+            ctx.fillText(`נוצר ב: ${currentTime}`, 400, 350);
+            
+            // הודעה מעודדת
+            ctx.fillStyle = '#87CEEB';
+            ctx.font = 'italic 24px Arial';
+            ctx.fillText('לשנה הבאה בירושלים הבנויה! 🙏', 400, 420);
+            
+            // QR code מדומה (מייצג קישור)
+            ctx.fillStyle = '#444';
+            ctx.fillRect(50, 480, 80, 80);
+            ctx.fillStyle = '#ffd700';
+            ctx.font = '12px Arial';
+            ctx.textAlign = 'left';
+            ctx.fillText('סרוק לעדכונים', 50, 575);
+            
+            // קרדיט מעוצב
+            ctx.fillStyle = '#888';
+            ctx.font = 'bold 18px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('נבנה ע"י y.d. Systems | yairdahn@gmail.com', 400, 550);
+            
+            // אפקט ויזואלי לכפתור הורדה
+            elements.downloadBtn.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                elements.downloadBtn.style.transform = '';
+            }, 150);
+            
+            // הורדה עם שם קובץ מתארי
+            const link = document.createElement('a');
+            const timestamp = new Date().toISOString().slice(0, 16).replace('T', '_').replace(':', '-');
+            link.download = `תשעה-באב-${selectedCity}-${timestamp}.png`;
+            link.href = canvas.toDataURL('image/png', 1.0);
+            link.click();
+            
+            showNotification('תמונה נשמרה! 📸', `התמונה נוצרה עבור ${selectedCity} ונשמרה בהצלחה`, [200, 100, 200]);
+        }
+
+        // ניהול מודל
+        function openModal() {
+            elements.modal.style.display = 'block';
+            elements.modal.setAttribute('aria-hidden', 'false');
+            // פוקוס על כפתור הסגירה לנגישות
+            setTimeout(() => elements.closeModal.focus(), 100);
+        }
+
+        function closeModal() {
+            elements.modal.style.display = 'none';
+            elements.modal.setAttribute('aria-hidden', 'true');
+            // החזרת פוקוס לאלמנט שפתח את המודל
+            elements.creditLink.focus();
+        }
+
+        // Event Listeners
+        function setupEventListeners() {
+            // בחירת עיר
+            elements.citySelect.addEventListener('change', () => {
+                saveCity(elements.citySelect.value);
+                updateCountdown();
+                // אפקט ויזואלי למעבר
+                elements.container.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    elements.container.style.transform = '';
+                }, 150);
+            });
+
+            // תמת צבע
+            elements.themeToggle.addEventListener('click', toggleTheme);
+
+            // שיתוף
+            elements.shareBtn.addEventListener('click', shareCountdown);
+            elements.shareMainBtn.addEventListener('click', shareCountdown);
+
+            // הורדת תמונה
+            elements.downloadBtn.addEventListener('click', downloadCountdownImage);
+
+            // מודל יצירת קשר
+            elements.creditLink.addEventListener('click', openModal);
+            elements.creditLink.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openModal();
+                }
+            });
+
+            elements.closeModal.addEventListener('click', closeModal);
+
+            // סגירת מודל בלחיצה על רקע או ESC
+            elements.modal.addEventListener('click', (e) => {
+                if (e.target === elements.modal) {
+                    closeModal();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && elements.modal.style.display === 'block') {
+                    closeModal();
+                }
+            });
+
+            // ניהול מצב גלוי/נסתר של הדף
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    clearInterval(updateInterval);
+            } else {
+                    startCountdownTimer();
+                }
+            });
+
+            // מקשים קיצור
+            document.addEventListener('keydown', (e) => {
+                if (e.ctrlKey || e.metaKey) {
+                    switch (e.key) {
+                        case 's':
+                            e.preventDefault();
+                            shareCountdown();
+                            break;
+                        case 'd':
+                            e.preventDefault();
+                            downloadCountdownImage();
+                            break;
+                        case 't':
+                            e.preventDefault();
+                            toggleTheme();
+                            break;
+                    }
+                }
+            });
+        }
+
+        // Service Worker לביצועים (אופציונלי)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => console.log('SW registered'))
+                    .catch(error => console.log('SW registration failed'));
+            });
+        }
+
+        // אתחול האפליקציה
+        document.addEventListener('DOMContentLoaded', init);
+
+        // טיפול בשגיאות
+        window.addEventListener('error', (e) => {
+            console.error('שגיאה באפליקציה:', e.error);
+        });
+
+        // אופטימיזציה לביצועים
+        let rafId;
+        function optimizedUpdate() {
+            cancelAnimationFrame(rafId);
+            rafId = requestAnimationFrame(updateCountdown);
+        }
+
+        // שמירת מצב בעת סגירה
+        window.addEventListener('beforeunload', () => {
+            clearInterval(updateInterval);
+        });
     </script>
 </body>
 </html>
