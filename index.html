@@ -37,7 +37,29 @@
 
   <link rel="icon"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2312100d'/%3E%3Cpath d='M32 9c-8 11-14 20-14 31a14 14 0 1 0 28 0C46 29 40 20 32 9Z' fill='%23d9b46a'/%3E%3Cpath d='M33 51a8 8 0 0 1-8-8c0-6 4-10 8-16 4 6 8 10 8 16a8 8 0 0 1-8 8Z' fill='%23fff2bf'/%3E%3C/svg%3E">
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
 
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyCruqARBATVjrm98i2iSR3W5sWCAIPnEZA",
+      authDomain: "beav-b8626.firebaseapp.com",
+      projectId: "beav-b8626",
+      storageBucket: "beav-b8626.firebasestorage.app",
+      messagingSenderId: "270409534540",
+      appId: "1:270409534540:web:bc3cb7254d768f196838e9",
+      measurementId: "G-578B59GV77"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
